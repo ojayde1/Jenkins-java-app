@@ -1,56 +1,31 @@
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-    <groupId>com.javatechie</groupId>
-    <artifactId>springboot-k8s-demo</artifactId>
-    
-    <!-- CRITICAL CHANGE 1: Set packaging to WAR -->
-    <packaging>war</packaging>
-    
-    <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-k8s-demo</name>
-    <description>Demo project for Spring Boot</description>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-    <dependencies>
+<!-- ... inside the main <project> tag ... -->
+
+<dependencies>
+    <!-- Web Starter Dependency (for MVC functionality) -->
+    <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
-    </dependencies>
-        
-        <!-- CRITICAL CHANGE 2: Set Tomcat scope to 'provided' -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- Existing Test Dependency -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
-    <build>
-        <!-- CRITICAL CHANGE 3: Force the output name to 'app.war' -->
-        <finalName>app</finalName> 
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    </dependency>
+    
+    <!-- Tomcat Dependency (CRITICAL: Required for WAR, must be "provided") -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    
+    <!-- Test Dependency -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    
+</dependencies>
 
-</project>
+<!-- ... rest of the <project> tag, including <build> and <finalName>app</finalName> ... -->
+
 
 
 <!-- <?xml version="1.0" encoding="UTF-8"?>
