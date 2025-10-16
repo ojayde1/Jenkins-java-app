@@ -7,14 +7,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 
 <modelVersion>4.0.0</modelVersion>
 
-<!-- CRITICAL: Set packaging to 'war' for deployment to an external server -->
 <packaging>war</packaging>
 
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.2.5</version>
-    <relativePath/> 
+    <relativePath/>
 </parent>
 
 <groupId>com.devjide.demo</groupId>
@@ -28,20 +27,17 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 </properties>
 
 <dependencies>
-    <!-- Standard Spring Boot Web Dependency -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     
-    <!-- Tomcat dependency MUST be 'provided' for WAR deployment -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-tomcat</artifactId>
         <scope>provided</scope>
     </dependency>
     
-    <!-- Standard Test Dependency -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-test</artifactId>
@@ -50,7 +46,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 </dependencies>
 
 <build>
-    <!-- Sets the final WAR file name to 'app.war' -->
     <finalName>app</finalName>
     <plugins>
         <plugin>
