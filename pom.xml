@@ -1,65 +1,66 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- CRITICAL: Every POM MUST start and end with the <project> tag -->
-    <modelVersion>4.0.0</modelVersion>
-    
-    <!-- 1. CHANGE PACKAGING TO WAR -->
-    <packaging>war</packaging>
-    
-    <parent>
+<modelVersion>4.0.0</modelVersion>
+
+<!-- CRITICAL: Set packaging to 'war' for deployment to an external server -->
+<packaging>war</packaging>
+
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.5</version>
+    <!-- lookup parent from repository -->
+    <relativePath/> 
+</parent>
+
+<groupId>com.devjide.demo</groupId>
+<artifactId>Jenkin-Java-App</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+<name>JenkinJavaApp</name>
+<description>Demo project for Spring Boot and Jenkins CI/CD</description>
+
+<properties>
+    <java.version>17</java.version>
+</properties>
+
+<dependencies>
+    <!-- Standard Spring Boot Web Dependency -->
+    <dependency>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
     
-    <groupId>com.devjide.demo</groupId>
-    <artifactId>Jenkin-Java-App</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>JenkinJavaApp</name>
-    <description>Demo project for Spring Boot and Jenkins CI/CD</description>
+    <!-- Tomcat dependency MUST be 'provided' for WAR deployment -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
     
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+    <!-- Standard Test Dependency -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 
-    <!-- 2. CORRECT DEPENDENCIES BLOCK -->
-    <dependencies>
-        <!-- Web Starter Dependency (for MVC functionality) -->
-        <dependency>
+<build>
+    <!-- Sets the final WAR file name to 'app.war' -->
+    <finalName>app</finalName>
+    <plugins>
+        <plugin>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        
-        <!-- Tomcat Dependency (CRITICAL: Required for WAR, must be "provided") -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- Test Dependency -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 
-    <build>
-        <!-- 3. CRITICAL: Renames the output WAR file to 'app.war' -->
-        <finalName>app</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
 
