@@ -3,12 +3,13 @@ package com.devjide.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class JenkinJavaApp { // RENAMED: More descriptive class name
+public class JenkinJavaApp extends SpringBootServletInitializer { // RENAMED: More descriptive class name
 
     /**
      * Defines a simple GET endpoint to confirm the application is running.

@@ -14,26 +14,26 @@ COPY src ./src
 
 # Build the application and package it into a JAR file.
 # This single command will compile, run tests (if not skipped), and create the JAR.
-# The JAR will be in /app/target/springboot-k8s-demo-0.0.1-SNAPSHOT.jar
+# The JAR will be in /app/target/springboot-jenkins-demo.jar-0.0.1-SNAPSHOT.jar
 RUN mvn clean package -Dmaven.test.skip=true
 
-# --- Stage 2: Runner (Production Image) ---
-FROM openjdk:8-jre-alpine
+# # --- Stage 2: Runner (Production Image) ---
+# FROM openjdk:8-jre-alpine
 
-# Set environment variables for Java application.
-ENV SPRING_PROFILES_ACTIVE=production
-ENV JAVA_TOOL_OPTIONS="-XX:+ExitOnOutOfMemoryError"
+# # Set environment variables for Java application.
+# ENV SPRING_PROFILES_ACTIVE=production
+# ENV JAVA_TOOL_OPTIONS="-XX:+ExitOnOutOfMemoryError"
 
-# Default for Spring Boot is 8080.
-EXPOSE 8080
+# # Default for Spring Boot is 8080.
+# EXPOSE 8080
 
-# Set the working directory for the final image.
-WORKDIR /app
+# # Set the working directory for the final image.
+# WORKDIR /app
 
 
-# IMPORTANT: Replace 'springboot-k8s-demo-0.0.1-SNAPSHOT.jar' with your actual JAR filename.
-# It's based on your <artifactId>-<version>.jar
-COPY --from=builder /app/target/springboot-k8s-demo.jar ./app.jar
+# # IMPORTANT: Replace 'springboot-jenkins-demo-0.0.1-SNAPSHOT.jar' with your actual JAR filename.
+# # It's based on your <artifactId>-<version>.jar
+# COPY --from=builder /app/target/springboot-jenkins-demo.jar ./app.jar
 
-# Define the command to run your Java application when the container starts.
-CMD ["java", "-jar", "app.jar"]
+# # Define the command to run your Java application when the container starts.
+# CMD ["java", "-jar", "app.jar"]

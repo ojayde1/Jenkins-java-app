@@ -40,5 +40,4 @@
 		</plugins>
 		<finalName>springboot-jenkins-demo</finalName>
 	</build>
-
 </project> 
