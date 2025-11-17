@@ -23,7 +23,7 @@ public class JenkinJavaApp extends SpringBootServletInitializer { // RENAMED: Mo
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(JenkinJavaApp.class, args);
+        SpringApplication.run(JenkinJavaApp.class, args); //
     }
 
 }
